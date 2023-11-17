@@ -1,0 +1,40 @@
+#team-list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    grid-template-rows: repeat(6, auto); 
+    gap: 10px; 
+    margin-top: 40px;
+    /* width: 100%; */
+  }
+
+  #logo {
+    margin: 0;
+    padding: 0;
+  }
+
+  .team-logo {
+    width: 90px;
+    height: auto; 
+    display: block;
+    margin: 0 auto;
+  }
+
+  #logo-button{
+    border: none;
+  }
+
+  #intro{
+    /* Set the background image URL */
+    background-image: url('https://pngimg.com/d/nba_PNG15.png');
+    /* Set background size to cover the entire section */
+    background-size: contain;
+    /* Set background attachment to fixed for a fixed background */
+    background-attachment: fixed;
+    /* Add additional styles as needed */
+  }
+
+  
+
+
+ 
