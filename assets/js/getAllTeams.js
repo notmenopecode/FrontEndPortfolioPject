@@ -1,4 +1,4 @@
-document.addEventListener('click', function(event) {
+document.addEventListener('DOMContentLoaded', function() {
     const clickedElement = event.target;
 
     // Check if the clicked element is a button with the id 'logo-button'
@@ -45,11 +45,12 @@ function formatTeams(teams) {
        teamId = team.id
        
        return `
-       <li id="logo">
-       <button id="logo-button" data-team-id="${team.id}" onclick="handleButtonClick(this)">
-       <img src="${team.logo}" alt="${team.name} Logo" class="team-logo">
-   </button>
-      </li>`;
+   <li id="logo">
+   <button id="logo-button" data-team-id="${team.id}" onclick="handleButtonClick(${team.id})">
+   <img src="${team.logo}" alt="${team.name} Logo" class="team-logo">
+</button>
+  </li>`;
+
        
        // joining the array of list items into a string
    }).join('');
@@ -80,7 +81,7 @@ function singleTeam(teamInfo) {
         return `<ul id="team-list" style="list-style-type:none;">${teamListHTML}</ul>`;
     } else {
         // If it's not an array (single team), handle it accordingly
-        const { city, code, leagues, logo, name } = teamInfo;
+        //const { city, code, leagues, logo, name } = teamInfo;
         return `
             <ul id="team-list" style="list-style-type:none;">
                 <li id="logo">
@@ -165,33 +166,27 @@ async function getOneTeam(teamId){
             
             // Parse response to JSON
             const result = await response.json();
+
             console.log(result)
+
             const teamInfo = result.response;
-            console.log(teamInfo)
-            
-            const teamsSectionMain = document.getElementById('main');
-            
-            teamsSectionMain.innerHTML = singleTeam(teamInfo); 
-        }   
-        catch (error) {
+
+
+    }catch (error) {
             console.error(error);
         }
     }
+
     
-    function handleButtonClick(button) {
-        // Get the team ID from the data attribute
-        const teamId = button.getAttribute('data-team-id');
-          
-        console.log("success")
-    
+    async function handleButtonClick(teamId) {
         // Call the getOneTeam function with the selected team ID
-        getOneTeam(teamId);
-        //console.log(teamId)
-        window.location.href = '/generic.html';
+        await getOneTeam(teamId);
+        //window.location.href = `/generic.html?teamId=${teamId}`;
     }
-     console.log(teamId)
+    //console.log(teamId)
     
     
-     // calling the getAllTeams function
-     getAllTeams();
-     getOneTeam();
+    // calling the getAllTeams function
+    getAllTeams();
+    getOneTeam();
+    
