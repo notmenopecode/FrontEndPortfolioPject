@@ -1831,11 +1831,11 @@ input, select, textarea {
 		-webkit-transition: border-color 0.2s ease;
 		-ms-transition: border-color 0.2s ease;
 		transition: border-color 0.2s ease;
-		background-color: transparent;
-		border: solid 1px !important;
+		background-color: transparent; */
+		border: none;
 		border-color: rgba(255, 255, 255, 0.15) !important;
 		border-radius: 3em;
-		color: #ffffff !important;
+		 color: #ffffff !important; */
 		cursor: pointer;
 		display: inline-block;
 		font-size: 0.6em;
@@ -1940,41 +1940,7 @@ input, select, textarea {
 			pointer-events: none;
 		}
 
-		input[type="submit"]:hover,
-		input[type="reset"]:hover,
-		input[type="button"]:hover,
-		button:hover,
-		.button:hover {
-			border-color: rgba(255, 255, 255, 0.55) !important;
-		}
-
-			input[type="submit"]:hover:after,
-			input[type="reset"]:hover:after,
-			input[type="button"]:hover:after,
-			button:hover:after,
-			.button:hover:after {
-				opacity: 0.05;
-				-moz-transform: scale(1);
-				-webkit-transform: scale(1);
-				-ms-transform: scale(1);
-				transform: scale(1);
-			}
-
-			input[type="submit"]:hover:active,
-			input[type="reset"]:hover:active,
-			input[type="button"]:hover:active,
-			button:hover:active,
-			.button:hover:active {
-				border-color: #ffffff !important;
-			}
-
-				input[type="submit"]:hover:active:after,
-				input[type="reset"]:hover:active:after,
-				input[type="button"]:hover:active:after,
-				button:hover:active:after,
-				.button:hover:active:after {
-					opacity: 0.1;
-				}
+		
 
 /* Features */
 

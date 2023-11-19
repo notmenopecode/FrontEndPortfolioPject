@@ -15,10 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
 let teamId = 0;
 // function that takes array of teams as it's parameter
 function formatTeams(teams) {
-
+    
    // create a variable for all the non- nba teams to be removed from the filtered list of 41
    const teamsToRemove = [
        'Brisbane Bullets',
@@ -42,13 +46,16 @@ function formatTeams(teams) {
    // .map method iterates thru filteredTeams and creates a HTML list item for each team containing the team's logo and name
    const teamList = filteredTeams.map((team) => {
 
-       teamId = team.id
+       const teamId = team.id
        
        return `
-   <li id="logo">
-   <button id="logo-button" data-team-id="${team.id}" onclick="handleButtonClick(${team.id})">
-   <img src="${team.logo}" alt="${team.name} Logo" class="team-logo">
-</button>
+       <li id="logo">
+       <button id="logo-button" data-team-id="${team.id}" onclick="handleButtonClick(${team.id})">
+       <img src="${team.logo}" alt="${team.name} Logo" class="team-logo">
+       <div class="popup" onclick="myFunction()">${team.code}
+       <span class="popuptext" id="myPopup">${team.city}</span>
+ </div>
+   </button>
   </li>`;
 
        
@@ -142,8 +149,7 @@ async function getAllTeams() {
  }
 
 
-
-
+let storeTeamInfo = [];
 async function getOneTeam(teamId){
     //console.log(teamId)
         const url2 = `https://api-nba-v1.p.rapidapi.com/teams?id=${teamId}`;
@@ -167,10 +173,27 @@ async function getOneTeam(teamId){
             // Parse response to JSON
             const result = await response.json();
 
-            console.log(result)
-
-            const teamInfo = result.response;
             
+            const teamInfo = result.response;
+
+            storeTeamInfo.push(...teamInfo);
+
+            const popButtons = document.querySelectorAll('.team-logo');
+
+            popButtons.forEach((button, index) =>{
+                button.addEventListener('click', function () {
+                    const teamIdClicked = storeTeamInfo[index].id;
+                    // Use teamIdClicked as needed, for example, show a popup
+                    console.log('Clicked on team with ID:', teamIdClicked);
+                });
+            });
+            
+        
+            console.log(storeTeamInfo);
+
+            for(const team of teamInfo){
+              console.log(team);
+            }
 
 
     }catch (error) {
@@ -182,7 +205,7 @@ async function getOneTeam(teamId){
     async function handleButtonClick(teamId) {
         // Call the getOneTeam function with the selected team ID
         await getOneTeam(teamId);
-        window.location.href = `generic.html`;
+        //window.location.href = `generic.html`;
     }
     //console.log(teamId)
     
