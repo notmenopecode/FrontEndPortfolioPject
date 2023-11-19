@@ -70,7 +70,7 @@ function singleTeam(teamInfo) {
             const { city, code, leagues, logo, name } = team;
             return `
                 <li id="logo">
-                    <a id="logo-button" href="generic.html" data-team-id="${team.id}">
+                    <a id="logo-button" href="generic.html" data-team-id="${team}">
                         <img src="${team.logo}" alt="${team.name} Logo" class="team-logo">
                     </a>
                     <h3>${team.id}</h3>
@@ -170,6 +170,7 @@ async function getOneTeam(teamId){
             console.log(result)
 
             const teamInfo = result.response;
+            
 
 
     }catch (error) {
@@ -181,7 +182,7 @@ async function getOneTeam(teamId){
     async function handleButtonClick(teamId) {
         // Call the getOneTeam function with the selected team ID
         await getOneTeam(teamId);
-        //window.location.href = `/generic.html?teamId=${teamId}`;
+        window.location.href = `generic.html`;
     }
     //console.log(teamId)
     
