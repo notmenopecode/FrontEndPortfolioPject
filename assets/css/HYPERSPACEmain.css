@@ -216,6 +216,7 @@ input, select, textarea {
 
 	h2 {
 		font-size: 1.75em;
+		margin: 40px;
 	}
 
 	h3 {
@@ -2903,7 +2904,7 @@ input, select, textarea {
 			}
 
 			.split.style1 > :nth-child(2n - 1) {
-				width: calc(66.66666% - 2em);
+				width: calc(0% - 2em);
 			}
 
 			.split.style1 > :nth-child(2n) {
@@ -3499,7 +3500,7 @@ input, select, textarea {
 		position: fixed;
 		text-align: right;
 		top: 0;
-		width: 18em;
+		width: 16em;
 		z-index: 10000;
 	}
 

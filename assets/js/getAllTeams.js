@@ -1,17 +1,26 @@
 function showPopup(teamId, index) {
     const popupId = `myPopup-${teamId}-${index}`;
     const popup = document.getElementById(popupId);
-
+  
     if (popup) {
-        const allPopups = document.querySelectorAll('.popuptext');
-        allPopups.forEach(p => p.classList.remove('show'));
-
+      const allPopups = document.querySelectorAll('.popuptext');
+      allPopups.forEach(p => p.classList.remove('show'));
+  
+      setTimeout(() => {
         popup.classList.add('show');
-        console.log(`Clicked on team with ID: ${teamId}, at index: ${index}`);
+        setTimeout(() => {
+          popup.classList.remove('show');
+        }, 30000); // duration in milliseconds before pop up fades out
+      }); 
+  
+      console.log(`Clicked on team with ID: ${teamId}, at index: ${index}`);
     } else {
-        console.error(`Popup element with ID '${popupId}' not found.`);
+      console.error(`Popup element with ID '${popupId}' not found.`);
     }
-}
+  }
+
+
+
 
 document.addEventListener('DOMContentLoaded', async function() {
     async function getAllTeams() {
@@ -83,15 +92,19 @@ document.addEventListener('DOMContentLoaded', async function() {
         const teamList = filteredTeams.map((team, index) => {
             console.log(team)
             return `
-                <li id="logo">
-                    <button id="logo-button" data-team-id="${team.id}">
-                        <img src="${team.logo}" alt="${team.name} Logo" class="team-logo">
-                        <div class="popup" onclick="showPopup(${team.id}, ${index})">${team.code}
-                            <span class="popuptext" id="myPopup-${team.id}-${index}">${team.name}</span>
-                            
-                        </div>
-                    </button>
-                </li>`;
+            <li id="logo">
+            <button id="logo-button" data-team-id="${team.id}" onclick="showPopup(${team.id}, ${index})">
+              <img src="${team.logo}" alt="${team.name} Logo" class="team-logo">
+              <div class="popup">
+                <span class="popuptext" id="myPopup-${team.id}-${index}">
+                  <strong>${team.name} (${team.code})</strong><br>
+                  ${team.leagues.standard.conference}ern Conference<br>
+                  ${team.leagues.standard.division} Divison
+                  <!-- Add more properties as needed -->
+                </span>
+              </div>
+            </button>
+          </li>`;
         }).join('');
 
         return `<ul id="team-list" style="list-style-type:none;">${teamList}</ul>`;
@@ -102,5 +115,4 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     getAllTeams();
-});
-
+})
