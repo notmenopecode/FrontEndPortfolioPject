@@ -1,5 +1,5 @@
 # FrontEndPortfolioPject
 
-# OnlyNBA
+## OnlyNBA
 
-# Website that gives you slight information about NBA teams
+A Website that gives you slight information about NBA teams
