@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                   ${team.leagues.standard.conference}ern Conference<br>
 
                   ${team.leagues.standard.division} Divison
-                  <!-- Add more properties as needed -->
+                  
                 </span>
               </div>
             </button>
