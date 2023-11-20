@@ -13,7 +13,7 @@ function showPopup(teamId, index) {
         popup.classList.add('show');
         setTimeout(() => {
           popup.classList.remove('show');
-        }, 30000); // duration in milliseconds before pop up fades out
+        }, 5000); // duration in milliseconds before pop up fades out
       }); 
 
       // console.logs inside inspect element
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
                   ${team.leagues.standard.conference}ern Conference<br>
 
-                  ${team.leagues.standard.division} Divison
+                  ${team.leagues.standard.division} Division
                   
                 </span>
               </div>
